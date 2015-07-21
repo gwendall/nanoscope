@@ -15,6 +15,7 @@ Template.postItem.helpers({
     }
   });
 
+  /*
   Template.postSubmit.events({
     'submit form': function(e) {
       e.preventDefault();
@@ -27,7 +28,8 @@ Template.postItem.helpers({
       Meteor.call('post', post.url, post.title);
     }
   });
-
+  */
+  
 Template.postItem.events({
   'click .upvotable': function(e) {
     e.preventDefault();

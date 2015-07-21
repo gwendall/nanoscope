@@ -37,6 +37,18 @@
 </template>
 
 <template name="postSubmit">
+
+  {{#autoForm collection="Posts" id="postSubmit" type="method" meteormethod="post"}}
+
+    <input type="hidden" data-schema-key="userId" value={{currentUser._id}}/>
+    {{> afQuickField name="url"}}
+    {{> afQuickField name="title"}}
+    <div class="form-group">
+      <button type="submit" value="Submit" class="btn btn-primary">Submit</button>
+    </div>
+
+  {{/autoForm}}
+  <!--
   <form class="main form page">
     <div class="form-group">
       <label class="control-label" for="url">URL</label>
@@ -52,4 +64,5 @@
     </div>
     <input type="submit" value="Submit" class="btn btn-primary"/>
   </form>
+  -->
 </template>
