@@ -6,8 +6,12 @@
   <div class="container">
   <h1>Nanoscope</h1>
   {{>loginButtons}}
+  {{#if currentUser}}
     {{> postSubmit}}
-    {{> posts}}
+  {{else}}
+    <div class="alert alert-info">Please login to post</div>
+  {{/if}}
+  {{> posts}}
   </div>
 </body>
 
