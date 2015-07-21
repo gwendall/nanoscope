@@ -9,30 +9,35 @@ Template.postItem.helpers({
   },
 });
 
-  Template.posts.helpers({
-    posts: function () {
-      return Posts.find();
-    }
-  });
-
-  /*
-  Template.postSubmit.events({
-    'submit form': function(e) {
-      e.preventDefault();
-
-      var post = {
-        url: $(e.target).find('[name=url]').val(),
-        title: $(e.target).find('[name=title]').val(),
-      }
-
-      Meteor.call('post', post.url, post.title);
-    }
-  });
-  */
-  
 Template.postItem.events({
   'click .upvotable': function(e) {
     e.preventDefault();
-    Meteor.call('upvote', this._id);
+    Meteor.call('upvote', this._id, function(err, res) {
+      if (!err) return;
+      if (err.reason === 'missingUser') {
+        console.log('Please log in to upvote.');
+        sAlert.warning('Please log in to upvote.', {timeout: 3000 });
+      }
+    });
   }
+});
+
+Template.posts.helpers({
+  posts: function () {
+    return Posts.find();
+  }
+});
+
+Meteor.startup(function () {
+
+  sAlert.config({
+    effect: 'jelly',
+    position: 'top-right',
+    timeout: 5000,
+    html: false,
+    onRouteClose: true,
+    stack: true,
+    offset: 0
+  });
+
 });
