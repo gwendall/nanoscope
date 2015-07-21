@@ -4,7 +4,7 @@ Template.postItem.helpers({
     if (!_.include(this.upvoters, userId)) {
       return 'btn-primary upvotable';
     } else {
-      return 'disabled';
+      return 'disabled upvotable';
     }
   },
 });
