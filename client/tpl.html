@@ -42,7 +42,7 @@
 
 <template name="postSubmit">
 
-  {{#autoForm collection="Posts" id="postSubmit" type="method" meteormethod="post"}}
+  {{#autoForm collection="Posts" id="postSubmit" type="method" meteormethod="post" class="main form page"}}
 
     <input type="hidden" data-schema-key="userId" value={{currentUser._id}}/>
     {{> afQuickField name="url"}}
