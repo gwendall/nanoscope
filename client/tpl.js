@@ -24,7 +24,13 @@ Template.postItem.events({
 
 Template.posts.helpers({
   posts: function () {
-    return Posts.find();
+    var order = FlowRouter.getQueryParam('order');
+    var selector = {};
+    var options = {};
+    if (order === 'votes') {
+      options = { sort: { votes: -1 }};
+    }
+    return Posts.find(selector, options);
   }
 });
 

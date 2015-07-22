@@ -7,6 +7,8 @@
   <div class="container">
     <h1>Nanoscope</h1>
     {{>loginButtons}}
+    <div><a href="?order=date">order by date</a></div>
+    <div><a href="?order=votes">order by votes</a></div>
     {{#if currentUser}}
       {{> postSubmit}}
     {{else}}
